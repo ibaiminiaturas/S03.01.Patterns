@@ -10,7 +10,14 @@ foreach (glob(__DIR__ . "/Classes/*.php") as $filename) {
     require_once $filename;
 }
 
-$myStuff = new MyStuff();
+//creamos las dependencias desde fuera
+$houseKeys = new HouseKeys();
+$transportationMethod = new TransportationMethod();
+$wallet = new Wallet();
+$phone = new Smartphone();
+
+//inyectamos las dependencias por constuctor
+$myStuff = new MyStuff($houseKeys, $transportationMethod, $wallet, $phone);
 
 $user = new User($myStuff);
 

@@ -1,4 +1,5 @@
 <?php
+
 foreach (glob(__DIR__ . "/*.php") as $filename) {
     require_once $filename;
 }
@@ -34,15 +35,12 @@ class MyStuff
         return $this->wallet;
     }
 
-    public function __construct()
+    public function __construct(HouseKeys $houseKeys, TransportationMethod $transportationMethod, Wallet $wallet, SmartPhone $smartphone)
     {
-        $this->keys = new HouseKeys();
-        $this->transportationMethod = new TransportationMethod();
-        $this->wallet = new Wallet();
-        $this->phone = new SmartPhone();
+        $this->keys = $houseKeys;
+        $this->transportationMethod = $transportationMethod;
+        $this->wallet = $wallet;
+        $this->phone = $smartphone;
 
     }
 }
-
-
-?>
